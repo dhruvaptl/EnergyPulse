@@ -2,8 +2,7 @@ FROM rocker/r-ver:4.6.1
 
 WORKDIR /app
 
-RUN R -e "install.packages(c('plumber', 'jsonlite', 'cors'), repos='https://cloud.r-project.org')"
-
+RUN R -e "options(repos='https://cloud.r-project.org'); install.packages(c('plumber', 'jsonlite', 'cors'), dependencies=TRUE)"
 COPY . .
 
 EXPOSE 10000
